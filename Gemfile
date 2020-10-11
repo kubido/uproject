@@ -6,6 +6,7 @@ gem "activerecord"
 gem 'haml', '3.1.7'
 gem 'rest-client'
 gem 'rake'
+gem 'dotenv'
 
 group :development do
   gem "shotgun"

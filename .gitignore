@@ -7,3 +7,6 @@
 # Ignore bundler config
 /.bundle
 uproject.db
+.env
+db/schema.rb
+uproject.db-journal
