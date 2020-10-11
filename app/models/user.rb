@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   end
 
   def is_admin?
-    (settings.super_admin_uid + settings.admin_uids).include?(self.uid)
+    (settings.super_admin_uid + settings.admin_uids).include?(self.uid) rescue true
   end
 
   def exchange_facebook_access_token
