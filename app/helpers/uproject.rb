@@ -6,7 +6,7 @@ helpers do
   end
 
   def current_user    
-    return session[:login]
+    return session[:login] 
   end
 
   def display_status_mahasiswa(smt)

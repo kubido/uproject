@@ -27,7 +27,7 @@
       @success = User.register_facebook(params)
       @user = User.where(:uid => params[:uid]).first
     end
-
+    puts "--------------->#{@user}, #{@success}"
     session[:login] = @user
     @messages = Message.all
     haml :index, :layout => !request.xhr?

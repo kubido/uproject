@@ -44,26 +44,22 @@ function application() {
 
   }
   application.login = function () {
-    FB.login(function (response) {
-      if (response.authResponse) {
-        var _access_token = response.authResponse.accessToken;
-        var _uid = response.authResponse.userID;
-        FB.api('/me', function (response) {
-          var _username = response.username;
-          var _bio = response.bio;
-          var _email = response.email
 
-          $.ajax({
-            type: "POST",
-            url: "/facebook_auth",
-            data: { username: _username, uid: _uid, access_token: _access_token, bio: _bio, email: _email },
-            beforeSend: function () { $('#loader').show() },
-            complete: function () { $('#loader').hide() },
-            success: function (data) { window.location.reload() },
-            error: function () { alert('Terjadi Kesalahan ketika login.. silahkan coba lagi') }
-          });
-
-        });
+    FB.login(function ({ authResponse: { accessToken, userID } }) {
+      if (accessToken) {
+        FB.api(`/${userID}`, 'GET',
+          { "fields": "email" }
+          , function ({ email }) {
+            $.ajax({
+              type: "POST",
+              url: "/facebook_auth",
+              data: { username: email, uid: userID, access_token: accessToken, email },
+              beforeSend: function () { $('#loader').show() },
+              complete: function () { $('#loader').hide() },
+              success: function (data) { window.location.reload() },
+              error: function () { alert('Terjadi Kesalahan ketika login.. silahkan coba lagi') }
+            });
+          })
       } else {
         // cancelled
       }
