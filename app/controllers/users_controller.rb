@@ -1,4 +1,3 @@
-class UsersController < ApplicationController
 
   get '/members' do
     haml :members
@@ -42,4 +41,3 @@ class UsersController < ApplicationController
     end
   end
   
-end

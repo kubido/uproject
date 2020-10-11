@@ -1,4 +1,3 @@
-class CoursesController < ApplicationController
 
   ['/courses/create', "/courses/new", "/courses", "/courses/delete"].each do |path|
     before path do
@@ -27,5 +26,3 @@ class CoursesController < ApplicationController
       session[:flash] = {type: 'error', message: "Gagal membuat kursus baru"}
     end
   end
-
-end

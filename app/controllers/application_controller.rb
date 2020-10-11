@@ -1,4 +1,7 @@
-class ApplicationController < Application
+
+
+# class ApplicationController < Application
+  # require 'sinatra'
 
   ['/matrikulasi', "/members", "/profile", "/download", "/message"].each do |path|
     before path do      
@@ -61,4 +64,4 @@ class ApplicationController < Application
   end
 
   
-end
+# end

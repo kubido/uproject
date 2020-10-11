@@ -1,11 +1,11 @@
 require 'sinatra'
+require 'dotenv/load'
 require 'haml'
 require "sinatra/activerecord"
 require './app/helpers/uproject'
 
 enable :sessions
 
-class Application
   %w(models controllers helpers).map { |p| Dir.glob("#{Dir.pwd}/app/#{p}/*.rb") { |m| require "#{m.chomp}" }}
   configure :development, :test do
     set :database, "sqlite3:///uproject.db"    
@@ -30,11 +30,10 @@ class Application
     set :views, settings.root + '/app/views'
     set :public_folder, settings.root + "/app/assets"    
     
-    set :super_admin_uid, ENV['UPROJECT_ADMIN'].split(",")
-    set :admin_uids, ENV['UPROJECT_MANAGER'].split(",")
-    set :facebook_app_id, ENV['UPROJECT_FB_APP_ID'].split(",")
+    set :super_admin_uid, ENV['UPROJECT_ADMIN'].split(",") rescue nil
+    set :admin_uids, ENV['UPROJECT_MANAGER'].split(",") rescue nil
+    set :facebook_app_id, ENV['UPROJECT_FB_APP_ID'].split(",") rescue nil
 
     use Rack::Session::Pool, :key => 'rack.session'
   end
 
-end
