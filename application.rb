@@ -8,7 +8,7 @@ enable :sessions
 
   %w(models controllers helpers).map { |p| Dir.glob("#{Dir.pwd}/app/#{p}/*.rb") { |m| require "#{m.chomp}" }}
   configure :development, :test do
-    set :database, "sqlite3:///uproject.db"    
+    set :database, {adapter: "sqlite3", database: "sqlite3:///uproject.db"}
   end
 
   configure :production do
