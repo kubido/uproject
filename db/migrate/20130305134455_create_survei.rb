@@ -1,4 +1,4 @@
-class CreateSurvei < ActiveRecord::Migration
+class CreateSurvei < ActiveRecord::Migration[4.2]
   def up
     create_table :survei do |t|
       t.integer     :user_id

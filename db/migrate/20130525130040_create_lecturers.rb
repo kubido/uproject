@@ -1,4 +1,4 @@
-class CreateLecturers < ActiveRecord::Migration
+class CreateLecturers < ActiveRecord::Migration[4.2]
   def up
     create_table :lecturers do |t|
       t.integer   :user_id

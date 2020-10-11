@@ -1,4 +1,4 @@
-class ChangeCourses < ActiveRecord::Migration
+class ChangeCourses < ActiveRecord::Migration[4.2]
   def up
     change_column :courses, :user_id, :integer
     change_column :courses, :lecturer_id, :integer

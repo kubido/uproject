@@ -1,4 +1,4 @@
-class CreateDownloadLinks < ActiveRecord::Migration
+class CreateDownloadLinks < ActiveRecord::Migration[4.2]
   def up
     create_table :download_links do |t|      
       t.string      :link

@@ -1,4 +1,4 @@
-class CreateCourseMaterials < ActiveRecord::Migration
+class CreateCourseMaterials < ActiveRecord::Migration[4.2]
   def up
     create_table :course_materials do |t|
       t.integer   :course_id

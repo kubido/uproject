@@ -1,4 +1,4 @@
-class Facebook < ActiveRecord::Migration
+class Facebook < ActiveRecord::Migration[4.2]
   def up
     create_table :facebook do |t|
       t.string :uid
